@@ -39,6 +39,7 @@ export default {
 <style scoped>
   .about {
     justify-content: center;
+    padding: 0 10px;
   }
 
   .about-photo img{
@@ -48,5 +49,7 @@ export default {
 
   .about-content {
     justify-content: left !important;
+    text-align: left;
+    padding: 10px;
   }
 </style>
