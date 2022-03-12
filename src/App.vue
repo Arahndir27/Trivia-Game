@@ -15,7 +15,7 @@
         <a href="https://github.com/Arahndir27/Trivia-Game.git">
           <img
             alt="Github logo"
-            src="@/assets/github.png"
+            src="@/assets/github-logo-white.png"
             width="70"
             height="75"
           />
@@ -50,11 +50,11 @@ body {
 }
 .nav a {
   font-weight: bold;
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
 }
 .nav a:hover {
-  color: rgb(187, 255, 255);
+  color: rgb(0, 255, 255);
 }
 .nav-item {
   padding: 10px;
