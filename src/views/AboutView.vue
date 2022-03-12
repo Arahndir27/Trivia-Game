@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>About the Creators</h1>
 
     <div class="about-photo">
       <img src="../assets/us.jpg" class="img-fluid" />
@@ -37,7 +37,19 @@ export default {
 </script>
 
 <style scoped>
-  img {
-    height: 400px;
+  .about {
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .about-photo img{
+    width: 40%;
+    height: auto;
+  }
+
+  .about-content {
+    justify-content: left !important;
+    text-align: left;
+    padding: 10px;
   }
 </style>

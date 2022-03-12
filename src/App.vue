@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <nav class="nav">
-      <router-link to="/">Home</router-link>  |
-      <router-link to="/about">About</router-link>  |
-      <router-link to="/suggestions">Feedback</router-link>
+      <router-link to="/" class="nav-item">Home</router-link>
+      <router-link to="/about" class="nav-item">About</router-link>
+      <router-link to="/suggestions" class="nav-item">Feedback</router-link>
     </nav>
     <router-view/>
     <div class="footer">
@@ -30,22 +30,32 @@
   color: #2c3e50;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
 .nav {
-  background-color: azure;
-}
-
-nav {
+  background-color: #0077e6;
   padding: 30px;
-}
-
-nav a {
+  color: black;
   font-weight: bold;
-  color: #002447;
+  text-align: center;
+}
+.nav a {
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none;
+}
+.nav a:hover {
+  color: rgb(187, 255, 255);
+}
+.nav-item {
+  padding: 10px;
 }
 
-/* nav a.router-link-exact-active {
-  color: #3ff0f0;
-} */
 
 .footer {
     /*background-color: rgb(99, 0, 133);*/
@@ -56,9 +66,8 @@ nav a {
     align-items: center;
     /*position: absolute;*/
     bottom: 0 !important;
-    background-color: #1d56f2;
+    background-color: #0077e6;
 }
-
 .footerItem {
     color: #ffffff;
     font-size: larger;
