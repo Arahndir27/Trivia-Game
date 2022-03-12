@@ -7,9 +7,9 @@
             <input type="submit" value="Submit" class="submit">
         </form>
 
-        <!-- <div class="added-suggestions" v-for="suggested in suggestions">
-            
-        </div> -->
+        <div v-for="suggested in suggestions" v-bind:key="suggested.id">
+            <p>{{suggested.comment}}</p>
+        </div>
 
     </div>
 </template>
@@ -20,12 +20,19 @@ export default {
     data() {
         return {
             suggestion: '',
-            suggestions: [],
+            suggestions: {
+                id:'',
+                comment:''
+            },
+            number:0
         };
     },
     methods: {
         addSuggestion() {
-            this.suggestions.push(this.suggestion);
+            this.suggestions.comment=this.suggestion;
+            this.suggestions.id=this.number;
+            this.number++;
+            this.suggestion='';
         }
     }
 }
