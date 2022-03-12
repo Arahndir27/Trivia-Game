@@ -29,7 +29,13 @@
       </button>
     </div>
     <div v-if="answered">
-      <div>
+      <div v-if="this.correct">
+        Correct!
+      </div>
+      <div v-else>
+        Actually, the answer is {{this.question.answer}}.
+      </div>
+      <div class="info">
         {{ this.question.info }}
       </div>
       <!--Next Button-->
@@ -54,6 +60,7 @@ export default {
     return {
       question: {},
       answered: false,
+      correct: false,
     };
   },
   methods: {
@@ -78,6 +85,10 @@ export default {
       //Keep track of score
       if (ans === this.question.answer) {
         ++this.$root.$data.numCorrect;
+        this.correct = true;
+      }
+      else {
+        this.correct = false;
       }
       //Show stuff that needs to be showed
       this.answered = true;
@@ -116,14 +127,16 @@ export default {
   flex-direction: row;
 }
 
+.trivia {
+  font-size: 2em;
+}
+
 #true {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 2%;
 }
 
 #false {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 2%;
 }
 
 /*Thank you https://getcssscan.com/css-buttons-examples*/

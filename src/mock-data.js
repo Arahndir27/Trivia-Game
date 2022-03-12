@@ -144,7 +144,7 @@ let trivia = [
         statement: "Scallops don't have good vision.",
         answer: false,      
         used: false,
-        info: "Scallops have as many as 100 simple eyes. They are frequently blue."
+        info: "Scallops have as many as 100 simple eyes, which are frequently blue."
     },
     {
         id: 22,
