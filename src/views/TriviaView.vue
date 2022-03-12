@@ -6,20 +6,43 @@
     </div>
     <div class="ans-buttons">
       <!--True Button-->
-      <button @click="checkAnswer(true)" id="true" class="button-82-pushable" role="button">
+      <button
+        @click="checkAnswer(true)"
+        id="true"
+        class="button-82-pushable"
+        role="button"
+      >
         <span class="button-82-shadow"></span>
-        <span class="button-82-edge"></span>
+        <span class="true-button-82-edge"></span>
         <span class="true-button-82-front text"> TRUE </span>
       </button>
       <!--False Button-->
-      <button @click="checkAnswer(false)" id="false" class="button-82-pushable" role="button">
+      <button
+        @click="checkAnswer(false)"
+        id="false"
+        class="button-82-pushable"
+        role="button"
+      >
         <span class="button-82-shadow"></span>
-        <span class="button-82-edge"></span>
+        <span class="false-button-82-edge"></span>
         <span class="false-button-82-front text"> FALSE </span>
       </button>
     </div>
     <div v-if="answered">
-      <button id="again">Next</button>
+      <div>
+        {{ this.question.info }}
+      </div>
+      <!--Next Button-->
+      <button
+        @click="setQuestion()"
+        id="next"
+        class="button-82-pushable"
+        role="button"
+      >
+        <span class="button-82-shadow"></span>
+        <span class="next-button-82-edge"></span>
+        <span class="next-button-82-front text"> NEXT </span>
+      </button>
     </div>
   </div>
 </template>
@@ -40,11 +63,24 @@ export default {
       let size = this.unUsedTrivia.length;
       let index = Math.floor(Math.random() * size);
       this.question = this.unUsedTrivia[index];
+      this.answered = false;
     },
     checkAnswer(ans) {
+      //Mark question as used
+      //Find index of question
+      let index = this.$root.$data.trivia.indexOf(this.question);
+      if (index === -1) {
+        console.log("ERROR!!!");
+      }
+      else {
+        this.$root.$data.trivia[index].used = true;
+      }
+      //Keep track of score
       if (ans === this.question.answer) {
         ++this.$root.$data.numCorrect;
       }
+      //Show stuff that needs to be showed
+      this.answered = true;
     },
   },
   computed: {
@@ -117,7 +153,8 @@ export default {
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
-.button-82-edge {
+/*True Button Colors*/
+.true-button-82-edge {
   position: absolute;
   top: 0;
   left: 0;
@@ -126,10 +163,10 @@ export default {
   border-radius: 12px;
   background: linear-gradient(
     to left,
-    hsl(340deg 100% 16%) 0%,
-    hsl(340deg 100% 32%) 8%,
-    hsl(340deg 100% 32%) 92%,
-    hsl(340deg 100% 16%) 100%
+    hsl(121deg 100% 16%) 0%,
+    hsl(121deg 100% 32%) 8%,
+    hsl(121deg 100% 32%) 92%,
+    hsl(121deg 100% 16%) 100%
   );
 }
 
@@ -146,6 +183,23 @@ export default {
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
+/*False Button Colors*/
+.false-button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(340deg 100% 16%) 0%,
+    hsl(340deg 100% 32%) 8%,
+    hsl(340deg 100% 32%) 92%,
+    hsl(340deg 100% 16%) 100%
+  );
+}
+
 .false-button-82-front {
   display: block;
   position: relative;
@@ -154,6 +208,36 @@ export default {
   font-size: 1.1rem;
   color: white;
   background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+/*Next Button Colors*/
+.next-button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(205deg 100% 16%) 0%,
+    hsl(205deg 100% 32%) 8%,
+    hsl(205deg 100% 32%) 92%,
+    hsl(205deg 100% 16%) 100%
+  );
+}
+
+.next-button-82-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: hsl(205deg 100% 45%);
   will-change: transform;
   transform: translateY(-4px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
