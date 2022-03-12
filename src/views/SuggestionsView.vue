@@ -11,38 +11,46 @@
       </button>
     </form>
 
-        <div v-for="suggested in suggestions" v-bind:key="suggested.id">
-            <p>{{suggested.comment}}</p>
-        </div>
-
+    <div class="suggestions" v-for="suggested in suggestions" v-bind:key="suggested.id">
+      <p><strong>Suggestion Number: </strong>{{suggested.id}}</p>
+      <p>{{ suggested.comment }}</p>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'Suggestion-view',
-    data() {
-        return {
-            suggestion: '',
-            suggestions: {
-                id:'',
-                comment:''
-            },
-            number:0
-        };
+  name: "Suggestion-view",
+  data() {
+    return {
+      suggestion: "",
+      suggestionObj: {
+        id: "",
+        comment: "",
+      },
+      suggestions: [],
+      number: 0,
+    };
+  },
+  methods: {
+    addSuggestion() {
+      this.suggestionObj.comment = this.suggestion;
+      this.suggestionObj.id = this.number;
+      console.log(this.suggestionObj.comment);
+      this.number++;
+      this.suggestions.push({ ...this.suggestionObj });
+      this.suggestion = "";
     },
-    methods: {
-        addSuggestion() {
-            this.suggestions.comment=this.suggestion;
-            this.suggestions.id=this.number;
-            this.number++;
-            this.suggestion='';
-        }
-    }
-}
+  },
+};
 </script>
 
 <style scoped>
+.suggestions {
+    text-align: left;
+    padding: 0 1em;
+}
+
 .input-form {
   display: flex;
   flex-direction: column;
