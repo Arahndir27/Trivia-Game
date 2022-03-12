@@ -35,3 +35,9 @@ export default {
   name: "About-view",
 };
 </script>
+
+<style scoped>
+  img {
+    height: 400px;
+  }
+</style>
