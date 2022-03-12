@@ -7,6 +7,7 @@ Vue.config.productionTip = false
 
 let data = {
   trivia: trivia,
+  numCorrect: 0,
 }
 
 new Vue({
